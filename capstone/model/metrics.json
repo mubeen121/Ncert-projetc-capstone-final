@@ -1,0 +1,19 @@
+{
+  "iteration_1_baseline": {
+    "val_f1": 1.0,
+    "test_f1": 0.9666,
+    "test_accuracy": 0.9667
+  },
+  "iteration_2_tuned": {
+    "val_f1": 0.9327,
+    "test_f1": 0.9666,
+    "test_accuracy": 0.9667
+  },
+  "selected": "iteration_1",
+  "final_test_metrics": {
+    "accuracy": 0.9667,
+    "precision_macro": 0.9697,
+    "recall_macro": 0.9667,
+    "f1_macro": 0.9666
+  }
+}

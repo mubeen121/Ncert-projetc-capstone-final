@@ -1,0 +1,34 @@
+flowchart TB
+    subgraph DataLayer["Data / Model Layer"]
+        A[reviews_dataset.csv<br/>Review data] --> B[generate_dataset.py]
+        B --> C[train_model.py<br/>TF-IDF + Logistic Regression]
+        C --> D[(sentiment_model.joblib)]
+        C --> E[(metrics.json)]
+    end
+
+    subgraph BackendLayer["Backend Layer — FastAPI"]
+        D --> F[main.py]
+        F --> G[/POST /api/predict/]
+        F --> H[/POST /api/predict/batch/]
+        F --> I[/GET /api/health/]
+        E --> J[/GET /api/metrics/]
+    end
+
+    subgraph FrontendLayer["Frontend Layer — HTML/JS Dashboard"]
+        K[index.html] -->|fetch JSON| G
+        K -->|fetch JSON| H
+        K -->|fetch JSON| I
+        K -->|fetch JSON| J
+    end
+
+    subgraph DeployLayer["Deployment"]
+        L[Docker: backend container :8000]
+        M[Docker: frontend/nginx container :8080]
+        N[docker-compose.yml]
+        N --> L
+        N --> M
+    end
+
+    F -.runs in.-> L
+    K -.served by.-> M
+    User((User)) -->|opens browser| K

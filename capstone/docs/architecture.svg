@@ -1,0 +1,72 @@
+<svg viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, sans-serif">
+  <rect width="1000" height="620" fill="#0f1419"/>
+  <text x="500" y="35" text-anchor="middle" fill="#e8edf2" font-size="20" font-weight="700">Sentiment Analysis Dashboard — System Architecture</text>
+
+  <!-- Data/Model Layer -->
+  <rect x="30" y="70" width="280" height="200" rx="10" fill="#171d26" stroke="#2a3341"/>
+  <text x="170" y="95" text-anchor="middle" fill="#5b8cff" font-size="14" font-weight="700">Data / Model Layer</text>
+  <rect x="55" y="110" width="230" height="35" rx="6" fill="#0f1419" stroke="#2a3341"/>
+  <text x="170" y="132" text-anchor="middle" fill="#e8edf2" font-size="12">reviews_dataset.csv</text>
+  <rect x="55" y="155" width="230" height="35" rx="6" fill="#0f1419" stroke="#2a3341"/>
+  <text x="170" y="177" text-anchor="middle" fill="#e8edf2" font-size="12">train_model.py (TF-IDF + LogReg)</text>
+  <rect x="55" y="200" width="230" height="35" rx="6" fill="#0f1419" stroke="#2a3341"/>
+  <text x="170" y="222" text-anchor="middle" fill="#35d399" font-size="12">sentiment_model.joblib</text>
+
+  <!-- Backend Layer -->
+  <rect x="360" y="70" width="280" height="200" rx="10" fill="#171d26" stroke="#2a3341"/>
+  <text x="500" y="95" text-anchor="middle" fill="#5b8cff" font-size="14" font-weight="700">Backend Layer (FastAPI)</text>
+  <rect x="385" y="110" width="230" height="30" rx="6" fill="#0f1419" stroke="#2a3341"/>
+  <text x="500" y="130" text-anchor="middle" fill="#e8edf2" font-size="11">POST /api/predict</text>
+  <rect x="385" y="145" width="230" height="30" rx="6" fill="#0f1419" stroke="#2a3341"/>
+  <text x="500" y="165" text-anchor="middle" fill="#e8edf2" font-size="11">POST /api/predict/batch</text>
+  <rect x="385" y="180" width="230" height="30" rx="6" fill="#0f1419" stroke="#2a3341"/>
+  <text x="500" y="200" text-anchor="middle" fill="#e8edf2" font-size="11">GET /api/health</text>
+  <rect x="385" y="215" width="230" height="30" rx="6" fill="#0f1419" stroke="#2a3341"/>
+  <text x="500" y="235" text-anchor="middle" fill="#e8edf2" font-size="11">GET /api/metrics</text>
+
+  <!-- Frontend Layer -->
+  <rect x="690" y="70" width="280" height="200" rx="10" fill="#171d26" stroke="#2a3341"/>
+  <text x="830" y="95" text-anchor="middle" fill="#5b8cff" font-size="14" font-weight="700">Frontend Layer</text>
+  <rect x="715" y="120" width="230" height="120" rx="6" fill="#0f1419" stroke="#2a3341"/>
+  <text x="830" y="150" text-anchor="middle" fill="#e8edf2" font-size="12">index.html Dashboard</text>
+  <text x="830" y="170" text-anchor="middle" fill="#8a97a8" font-size="10">- Text input</text>
+  <text x="830" y="188" text-anchor="middle" fill="#8a97a8" font-size="10">- Sentiment bars + history</text>
+  <text x="830" y="206" text-anchor="middle" fill="#8a97a8" font-size="10">- Model metrics panel</text>
+
+  <!-- Arrows layer1 -->
+  <line x1="310" y1="170" x2="360" y2="170" stroke="#5b8cff" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="640" y1="170" x2="690" y2="170" stroke="#5b8cff" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Deployment Layer -->
+  <rect x="30" y="320" width="940" height="200" rx="10" fill="#171d26" stroke="#2a3341"/>
+  <text x="500" y="345" text-anchor="middle" fill="#5b8cff" font-size="14" font-weight="700">Deployment — Docker Compose</text>
+
+  <rect x="70" y="365" width="260" height="110" rx="8" fill="#0f1419" stroke="#2a3341"/>
+  <text x="200" y="390" text-anchor="middle" fill="#e8edf2" font-size="12" font-weight="700">backend container</text>
+  <text x="200" y="415" text-anchor="middle" fill="#8a97a8" font-size="11">FastAPI + Uvicorn</text>
+  <text x="200" y="435" text-anchor="middle" fill="#8a97a8" font-size="11">port 8000</text>
+  <text x="200" y="455" text-anchor="middle" fill="#8a97a8" font-size="11">loads sentiment_model.joblib</text>
+
+  <rect x="370" y="365" width="260" height="110" rx="8" fill="#0f1419" stroke="#2a3341"/>
+  <text x="500" y="390" text-anchor="middle" fill="#e8edf2" font-size="12" font-weight="700">frontend container</text>
+  <text x="500" y="415" text-anchor="middle" fill="#8a97a8" font-size="11">Nginx serving index.html</text>
+  <text x="500" y="435" text-anchor="middle" fill="#8a97a8" font-size="11">port 8080</text>
+
+  <rect x="670" y="365" width="260" height="110" rx="8" fill="#0f1419" stroke="#2a3341"/>
+  <text x="800" y="390" text-anchor="middle" fill="#e8edf2" font-size="12" font-weight="700">User Browser</text>
+  <text x="800" y="415" text-anchor="middle" fill="#8a97a8" font-size="11">http://localhost:8080</text>
+  <text x="800" y="435" text-anchor="middle" fill="#8a97a8" font-size="11">calls backend API via fetch()</text>
+
+  <line x1="330" y1="420" x2="370" y2="420" stroke="#5b8cff" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="630" y1="420" x2="670" y2="420" stroke="#5b8cff" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="500" y="560" text-anchor="middle" fill="#8a97a8" font-size="12">
+    Flow: CSV Data -&gt; TF-IDF/LogReg Model -&gt; FastAPI serving predictions -&gt; HTML/JS Dashboard -&gt; End User
+  </text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#5b8cff"/>
+    </marker>
+  </defs>
+</svg>
